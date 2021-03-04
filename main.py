@@ -1,4 +1,4 @@
-from bottle import Bottle, static_file, template
+from bottle import Bottle, redirect, static_file, template
 
 
 app = Bottle()
@@ -12,3 +12,8 @@ def robotstxt():
 @app.route("/")
 def index():
     return "⚡️"
+
+
+@app.route("/*/<url:re:.+>")
+def index(url):
+    redirect(url)
